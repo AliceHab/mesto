@@ -1,0 +1,7 @@
+.elements__item {
+    border-radius: 11px;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}

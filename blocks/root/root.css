@@ -1,0 +1,9 @@
+.root {
+  --main-bg-color: #000;
+  background-color: #000;
+  font-family: "Inter", Arial, sans-serif;
+  color: #FFF;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
