@@ -1,5 +1,5 @@
 .elements__like-icon {
-    background: url(/images/icon-like.svg);
+    background: url(""./images/icon-like.svg");
     width: 22px;
     height: 19px;
     flex-shrink: 0;
@@ -11,5 +11,5 @@
 }
 
 .elements__like-icon:active {
-    background: url(/images/icon-like-active.svg);
+    background: url("./images/icon-like-active.svg");
 }
