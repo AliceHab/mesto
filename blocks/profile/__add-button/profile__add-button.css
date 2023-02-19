@@ -3,4 +3,16 @@
   background-color: var(--main-bg-color);
   padding: 0 64px;
   height: 50px;
+  transition: opacity 0.3s;
+}
+
+.profile__add-button:hover {
+  opacity: 0.5;
+}
+
+@media (max-width: 670px) {
+  .profile__add-button {
+    margin: 36px auto 0;
+    padding: 0 132px;
+  }
 }

@@ -1,6 +1,12 @@
 .header {
-    display: flex;
-    justify-items: flex-start;
-    padding: 45px 0 41px;
-    border-bottom: solid 1px #545454;
+  display: flex;
+  justify-items: flex-start;
+  padding: 45px 0 41px;
+  border-bottom: solid 1px #545454;
+}
+
+@media (max-width: 500px) {
+  .header {
+    padding: 17px 0 31px;
+  }
 }

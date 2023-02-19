@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Путешествия по России</title>
     <link rel="stylesheet" href="./pages/index.css" />
+    <script src="./scripts/index.js" defer></script>
   </head>
   <body class="root">
     <div class="page">
@@ -102,20 +103,22 @@
         </footer>
         <div class="popup">
           <div class="popup__container">
+            <button class="popup__exit">
+              <div class="popup__exit-icon"></div>
+            </button>
             <p class="popup__title">Редактировать профиль</p>
             <input
               type="text"
-              placeholder="Жак-Ив Кусто"
+              value="Напишите ваше имя"
               class="popup__input-text popup__input-text_type_name"
             />
             <input
               type="text"
-              placeholder="Исследователь океана"
+              value="Расскажите о себе"
               class="popup__input-text popup__input-text_type_job"
             />
-            <button class="popup__save-button">Сохранить</button>
+            <input type="submit" class="popup__save-button" value="Сохранить" />
           </div>
-          <button class="popup__exit"></button>
         </div>
       </main>
     </div>

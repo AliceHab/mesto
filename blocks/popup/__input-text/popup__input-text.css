@@ -4,11 +4,20 @@
   line-height: 17px;
   border: none;
   color: #000;
-  border-bottom: solid 1px rgba(0, 0, 0, .2);
+  border-bottom: solid 1px rgba(0, 0, 0, 0.2);
   margin: 30px 53px 0 19px;
   padding-bottom: 10px;
 }
 
 .popup__input-text:first-of-type {
-    margin-top: 54px;
+  margin-top: 54px;
+}
+
+@media (max-width: 500px) {
+  .popup__input-text {
+    margin: 30px 22px 0 22px;
+  }
+  .popup__input-text:first-of-type {
+    margin-top: 75px;
+  }
 }

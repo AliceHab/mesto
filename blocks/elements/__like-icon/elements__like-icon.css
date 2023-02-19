@@ -3,9 +3,13 @@
     width: 22px;
     height: 19px;
     flex-shrink: 0;
-    transition: opacity .5s;
+    transition: opacity .3s;
 }
 
 .elements__like-icon:hover {
     opacity: 0.5;
+}
+
+.elements__like-icon:active {
+    background: url(/images/icon-like-active.svg);
 }
