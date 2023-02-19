@@ -1,4 +1,4 @@
-# [Путешествие в Россию](https://alicehab.github.io/mesto/ "Перейти на сайт")
+# [Mesto](https://alicehab.github.io/mesto/ "Перейти на сайт")
 Первый проект по JavaScript без библиотек
 
 [![Место](https://i.postimg.cc/Y25V4t5W/2020-02-25-12-19-27-1586081326.png)](https://postimg.cc/RqTGyxVS)
