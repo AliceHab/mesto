@@ -1,8 +1,7 @@
 .elements__bottom {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin: 25px 19px 0 21px;
-    padding-bottom: 31px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 25px 19px 0 21px;
 }

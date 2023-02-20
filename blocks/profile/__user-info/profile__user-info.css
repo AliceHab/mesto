@@ -3,7 +3,7 @@
   min-height: 73px;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 750px) {
   .profile__user-info {
     margin: 26px 0 0;
     text-align: center;

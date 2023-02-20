@@ -3,12 +3,17 @@
   font-weight: 500;
   font-size: 42px;
   line-height: 48px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 400px;
 }
 
-@media (max-width: 670px) {
+@media (max-width: 750px) {
   .profile__user-name {
-    font-weight: 500;
     font-size: 27px;
     line-height: 33px;
+    margin-left: 18px;
+    max-width: 211px;
   }
 }

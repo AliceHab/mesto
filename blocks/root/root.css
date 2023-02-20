@@ -2,8 +2,15 @@
   --main-bg-color: #000;
   background-color: #000;
   font-family: "Inter", Arial, sans-serif;
-  color: #FFF;
+  color: #fff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  margin: 0 auto;
+}
+
+@media (min-width: 500px) {
+  .root {
+    max-width: 68%;
+  }
 }
