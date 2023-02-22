@@ -7,10 +7,17 @@
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   margin: 0 auto;
+  max-width: 880px;
 }
 
-@media (min-width: 500px) {
+@media (max-width: 500px) {
   .root {
     max-width: 68%;
+  }
+}
+
+@media (max-width: 320px) {
+  .root {
+    max-width: none;
   }
 }

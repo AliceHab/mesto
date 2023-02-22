@@ -5,12 +5,12 @@
   border: none;
   color: #000;
   border-bottom: solid 1px rgba(0, 0, 0, 0.2);
-  margin: 29px 53px 0 19px;
+  margin-top: 30px;
   padding-bottom: 10px;
 }
 
 .popup__input-text:first-of-type {
-  margin-top: 45px;
+  margin-top: 51px;
 }
 
 @media (max-width: 500px) {

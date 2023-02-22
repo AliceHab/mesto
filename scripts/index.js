@@ -8,8 +8,8 @@ let actualAbout = document.querySelector(".profile__user-describe");
 function openPopup() {
   popup.classList.add("popup_opened");
 
-  inputName.setAttribute("value", actualName.textContent);
-  inputAbout.setAttribute("value", actualAbout.textContent);
+  inputName.value = actualName.textContent;
+  inputAbout.value = actualAbout.textContent;
 }
 
 let exitButton = document.querySelector(".popup__exit");
