@@ -10,14 +10,11 @@
 }
 
 .popup__input-text:first-of-type {
-  margin-top: 51px;
+  margin-top: 47px;
 }
 
 @media (max-width: 500px) {
-  .popup__input-text {
-    margin: 27px 22px 0 22px;
-  }
   .popup__input-text:first-of-type {
-    margin-top: 75px;
+    margin-top: 72px;
   }
 }

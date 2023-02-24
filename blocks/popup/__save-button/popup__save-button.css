@@ -20,8 +20,7 @@
 @media (max-width: 500px) {
   .popup__save-button {
     padding: 14px 82px;
-    margin: 45px auto 25px;
-    font-weight: 400;
+    margin-top: 45px;
     font-size: 14px;
     line-height: 17px;
     text-align: center;

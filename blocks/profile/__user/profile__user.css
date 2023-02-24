@@ -6,7 +6,6 @@
 @media (max-width: 750px) {
     .profile__user {
       flex-direction: column;
-      position: relative;
     }
   }
   

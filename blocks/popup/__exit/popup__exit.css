@@ -8,8 +8,8 @@
   border: none;
   cursor: pointer;
   background-size: 32px 32px;
-  right: -42px;
-  top: -35px;
+  right: -41px;
+  top: -41px;
   transition: opacity 0.3s;
 }
 
@@ -23,5 +23,6 @@
     width: 20px;
     background-size: 20px 20px;
     right: 0px;
+    top: -39px;
   }
 }
