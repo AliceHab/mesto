@@ -31,79 +31,21 @@
           <button class="profile__add-button" type="button"></button>
         </section>
         <section class="cards">
-          <ul class="elements">
-            <li class="elements__item">
-              <img
-                src="./images/cards__image-karachaevsk.jpg"
-                alt="Карачаевск"
-                class="elements__image"
-              />
-              <div class="elements__bottom">
-                <h2 class="elements__title">Карачаевск</h2>
-                <button class="elements__like-icon" type="button"></button>
-              </div>
-            </li>
-            <li class="elements__item">
-              <img
-                src="./images/cards__image-elbrus.jpg"
-                alt="Гора Эльбрус"
-                class="elements__image"
-              />
-              <div class="elements__bottom">
-                <h2 class="elements__title">Гора Эльбрус</h2>
-                <button class="elements__like-icon" type="button"></button>
-              </div>
-            </li>
-            <li class="elements__item">
-              <img
-                src="./images/cards__image-dombai.jpg"
-                alt="Домбай"
-                class="elements__image"
-              />
-              <div class="elements__bottom">
-                <h2 class="elements__title">Домбай</h2>
-                <button class="elements__like-icon" type="button"></button>
-              </div>
-            </li>
-            <li class="elements__item">
-              <img
-                src="./images/cards__image-elbrus.jpg"
-                alt="Гора Эльбрус"
-                class="elements__image"
-              />
-              <div class="elements__bottom">
-                <h2 class="elements__title">Гора Эльбрус</h2>
-                <button class="elements__like-icon" type="button"></button>
-              </div>
-            </li>
-            <li class="elements__item">
-              <img
-                src="./images/cards__image-dombai.jpg"
-                alt="Домбай"
-                class="elements__image"
-              />
-              <div class="elements__bottom">
-                <h2 class="elements__title">Домбай</h2>
-                <button class="elements__like-icon" type="button"></button>
-              </div>
-            </li>
-            <li class="elements__item">
-              <img
-                src="./images/cards__image-karachaevsk.jpg"
-                alt="Карачаевск"
-                class="elements__image"
-              />
-              <div class="elements__bottom">
-                <h2 class="elements__title">Карачаево-Черкессия</h2>
-                <button class="elements__like-icon" type="button"></button>
-              </div>
-            </li>
-          </ul>
+          <ul class="elements"></ul>
         </section>
       </main>
       <footer class="footer">
         <p class="footer__copyright">© 2020 Mesto Russia</p>
       </footer>
+      <template id="elements-template">
+        <li class="elements__item">
+          <img class="elements__image" />
+          <div class="elements__bottom">
+            <h2 class="elements__title"></h2>
+            <button class="elements__like-icon" type="button"></button>
+          </div>
+        </li>
+      </template>
       <div class="popup">
         <div class="popup__container">
           <button class="popup__exit" type="button"></button>
