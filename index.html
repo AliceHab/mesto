@@ -44,6 +44,7 @@
             <h2 class="elements__title"></h2>
             <button class="elements__like-icon" type="button"></button>
           </div>
+          <button class="elements__delete" type="button"></button>
         </li>
       </template>
       <div class="popup">
@@ -66,6 +67,29 @@
               name="job"
             />
             <input type="submit" class="popup__save-button" value="Сохранить" />
+          </form>
+        </div>
+      </div>
+      <div class="popup-add">
+        <div class="popup__container">
+          <button class="popup__exit" type="button"></button>
+          <h2 class="popup__title">Новое место</h2>
+          <form class="popup__form" name="popup__info">
+            <input
+              type="text"
+              placeholder="Название"
+              value=""
+              class="popup__input-text popup__input-text_type_name"
+              name="name"
+            />
+            <input
+              type="text"
+              placeholder="Ссылка на картинку"
+              value=""
+              class="popup__input-text popup__input-text_type_job"
+              name="job"
+            />
+            <input type="submit" class="popup__save-button" value="Создать" />
           </form>
         </div>
       </div>

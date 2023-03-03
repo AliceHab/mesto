@@ -5,4 +5,5 @@
   flex-direction: column;
   overflow: hidden;
   min-height: 362px;
+  position: relative;
 }
