@@ -39,12 +39,12 @@
       </footer>
       <template id="elements-template">
         <li class="elements__item">
+          <button class="elements__delete" type="button"></button>
           <img class="elements__image" />
           <div class="elements__bottom">
             <h2 class="elements__title"></h2>
             <button class="elements__like-icon" type="button"></button>
           </div>
-          <button class="elements__delete" type="button"></button>
         </li>
       </template>
       <div class="popup">
@@ -89,8 +89,21 @@
               class="popup__input-text popup__input-text_type_job"
               name="job"
             />
-            <input type="submit" class="popup__save-button" value="Создать" />
+            <input
+              type="submit"
+              class="popup-add__save-button"
+              value="Создать"
+            />
           </form>
+        </div>
+      </div>
+      <div class="image-popup">
+        <div class="image-popup__container">
+          <figure class="image-popup__figure">
+            <img src="#" alt="#" class="image-popup__image" />
+            <figcaption class="image-popup__caption"></figcaption>
+          </figure>
+          <button class="image-popup__exit" type="button"></button>
         </div>
       </div>
     </div>
