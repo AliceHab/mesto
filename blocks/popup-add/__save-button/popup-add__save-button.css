@@ -15,7 +15,7 @@
   justify-content: center;
 }
 
-.popup-add__save-button {
+.popup-add__save-button:hover {
   opacity: 0.5;
 }
 
