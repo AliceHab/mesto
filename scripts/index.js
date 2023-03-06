@@ -11,9 +11,11 @@ const inputAboutPopupInfo = document.querySelector(
 const actualAbout = document.querySelector('.profile__user-describe');
 const popupAddCard = document.querySelector('.popup-add');
 const inputCardName = popupAddCard.querySelector(
-  '.popup__input-text_type_name'
+  '.popup-add__input-text_type_name'
 );
-const inputCardLink = popupAddCard.querySelector('.popup__input-text_type_job');
+const inputCardLink = popupAddCard.querySelector(
+  '.popup-add__input-text_type_link'
+);
 const buttonAddCard = document.querySelector('.profile__add-button');
 const cardsContainer = document.querySelector('.elements');
 const popupImageOpen = document.querySelector('.image-popup');
@@ -71,7 +73,7 @@ function createCard(card) {
 initialCards.forEach(createCard);
 
 // Создание новой карточки
-const formElementAdd = popupAddCard.querySelector('.popup__form');
+const formElementAdd = popupAddCard.querySelector('.popup-add__form');
 function addCard(evt) {
   evt.preventDefault();
 
@@ -115,12 +117,13 @@ function openPopup() {
 }
 function openPopupAddCard() {
   popupAddCard.classList.add('popup-add_opened');
+  console.log('Hii');
 }
 
 // Закрытие попапа профиля, попапа добавления карточки
 // и попапа открытия картинки
 const exitButtonPopupInfo = document.querySelector('.popup__exit');
-const exitButtonPopupAdd = popupAddCard.querySelector('.popup__exit');
+const exitButtonPopupAdd = popupAddCard.querySelector('.popup-add__exit');
 const exitButtonPopupImage = popupImageOpen.querySelector('.image-popup__exit');
 function closePopupInfo() {
   popupInfo.classList.remove('popup_opened');
