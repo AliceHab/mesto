@@ -23,6 +23,7 @@ const popupImageOpen = document.querySelector('.image-popup');
 const exitButtonPopupInfo = popupInfo.querySelector('.popup__exit');
 const exitButtonPopupAdd = popupAddCard.querySelector('.popup__exit');
 const exitButtonPopupImage = popupImageOpen.querySelector('.image-popup__exit');
+const formElementInfo = document.querySelector('.popup__form');
 
 // Создание карточки
 function createCard(card) {
@@ -70,7 +71,7 @@ function addCard(evt) {
   renderCard(createCard(newCardObject), cardsContainer);
   inputCardName.value = '';
   inputCardLink.value = '';
-  closePopupAdd();
+  closePopup(popupAddCard);
 }
 
 // Лайк
@@ -113,12 +114,11 @@ function closePopup(popup) {
 }
 
 // Изменение информации в профиле
-const formElementInfo = document.querySelector('.popup__form');
 function handleFormSubmit(evt) {
   evt.preventDefault();
   actualName.textContent = inputNamePopupInfo.value;
   actualAbout.textContent = inputAboutPopupInfo.value;
-  closePopupInfo();
+  closePopup(popupInfo);
 }
 
 buttonEditInfo.addEventListener('click', () => openPopup(popupInfo));
