@@ -12,10 +12,10 @@ const inputAboutPopupInfo = document.querySelector(
 const actualAbout = document.querySelector('.profile__user-describe');
 const popupAddCard = document.querySelector('.popup-add');
 const inputCardName = popupAddCard.querySelector(
-  '.popup-add__input-text_type_name'
+  '.popup__input-text_type_heading'
 );
 const inputCardLink = popupAddCard.querySelector(
-  '.popup-add__input-text_type_link'
+  '.popup__input-text_type_link'
 );
 const buttonAddCard = document.querySelector('.profile__add-button');
 const cardsContainer = document.querySelector('.elements');
