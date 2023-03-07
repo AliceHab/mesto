@@ -20,6 +20,9 @@ const inputCardLink = popupAddCard.querySelector(
 const buttonAddCard = document.querySelector('.profile__add-button');
 const cardsContainer = document.querySelector('.elements');
 const popupImageOpen = document.querySelector('.image-popup');
+const exitButtonPopupInfo = popupInfo.querySelector('.popup__exit');
+const exitButtonPopupAdd = popupAddCard.querySelector('.popup__exit');
+const exitButtonPopupImage = popupImageOpen.querySelector('.image-popup__exit');
 
 // Создание карточки
 function createCard(card) {
@@ -41,11 +44,18 @@ function createCard(card) {
   const deleteButton = cardTemplate.querySelector('.elements__delete');
   deleteButton.addEventListener('click', handleDeleteButton);
 
-  cardsContainer.append(cardTemplate);
+  return cardTemplate;
+}
+
+// Добавление карточки на страницу
+function renderCard(card, container) {
+  container.prepend(card);
 }
 
 // Создание карточек при загрузке странице
-initialCards.forEach(createCard);
+initialCards.forEach(function (card) {
+  renderCard(createCard(card), cardsContainer);
+});
 
 // Создание новой карточки
 const formElementAdd = popupAddCard.querySelector('.popup__form');
@@ -57,7 +67,9 @@ function addCard(evt) {
     link: inputCardLink.value,
   };
 
-  createCard(newCardObject);
+  renderCard(createCard(newCardObject), cardsContainer);
+  inputCardName.value = '';
+  inputCardLink.value = '';
   closePopupAdd();
 }
 
@@ -72,9 +84,11 @@ function openPopupImage(evt) {
   const linkToImage = imageToOpen.getAttribute('src');
   const openImage = popupImageOpen.querySelector('.image-popup__image');
   const imageCaption = popupImageOpen.querySelector('.image-popup__caption');
+  const imageAttributeAlt = imageToOpen.getAttribute('alt');
   openImage.setAttribute('src', linkToImage);
-  imageCaption.textContent = imageToOpen.getAttribute('alt');
-  popupImageOpen.classList.add('popup_opened');
+  openImage.setAttribute('alt', imageAttributeAlt);
+  imageCaption.textContent = imageAttributeAlt;
+  openPopup(popupImageOpen);
 }
 
 // Удаление карточки при нажатии на кнопку
@@ -84,29 +98,18 @@ function handleDeleteButton(evt) {
   card.remove();
 }
 
-// Открытие попапа профиля и попапа добавления карточки
-function openPopup() {
-  popupInfo.classList.add('popup_opened');
+// Открытие попапа
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
+  console.log('hii');
+
   inputNamePopupInfo.value = actualName.textContent;
   inputAboutPopupInfo.value = actualAbout.textContent;
 }
-function openPopupAddCard() {
-  popupAddCard.classList.add('popup_opened');
-}
 
-// Закрытие попапа профиля, попапа добавления карточки
-// и попапа открытия картинки
-const exitButtonPopupInfo = document.querySelector('.popup__exit');
-const exitButtonPopupAdd = popupAddCard.querySelector('.popup__exit');
-const exitButtonPopupImage = popupImageOpen.querySelector('.image-popup__exit');
-function closePopupInfo() {
-  popupInfo.classList.remove('popup_opened');
-}
-function closePopupAdd() {
-  popupAddCard.classList.remove('popup_opened');
-}
-function closePopupImage() {
-  popupImageOpen.classList.remove('popup_opened');
+// Закрытие попапа
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
 }
 
 // Изменение информации в профиле
@@ -118,10 +121,12 @@ function handleFormSubmit(evt) {
   closePopupInfo();
 }
 
-exitButtonPopupInfo.addEventListener('click', closePopupInfo);
-exitButtonPopupAdd.addEventListener('click', closePopupAdd);
-exitButtonPopupImage.addEventListener('click', closePopupImage);
-buttonEditInfo.addEventListener('click', openPopup);
-buttonAddCard.addEventListener('click', openPopupAddCard);
+buttonEditInfo.addEventListener('click', () => openPopup(popupInfo));
+buttonAddCard.addEventListener('click', () => openPopup(popupAddCard));
+exitButtonPopupInfo.addEventListener('click', () => closePopup(popupInfo));
+exitButtonPopupAdd.addEventListener('click', () => closePopup(popupAddCard));
+exitButtonPopupImage.addEventListener('click', () =>
+  closePopup(popupImageOpen)
+);
 formElementInfo.addEventListener('submit', handleFormSubmit);
 formElementAdd.addEventListener('submit', addCard);
