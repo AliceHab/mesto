@@ -6,6 +6,7 @@
     <title>Mesto</title>
     <link rel="stylesheet" href="./pages/index.css" />
     <script type="module" src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js" defer></script>
   </head>
   <body class="root">
     <div class="page">
@@ -51,21 +52,31 @@
         <div class="popup__container">
           <button class="popup__exit" type="button"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__form" name="popup__info">
+          <form class="popup__form" name="popup__info" novalidate>
             <input
+              required
               type="text"
+              minlength="2"
+              maxlength="40"
               placeholder="Напишите ваше имя"
               value=""
               class="popup__input-text popup__input-text_type_name"
+              id="popup__name-input"
               name="name"
             />
+            <span class="popup__input-error popup__name-input-error"></span>
             <input
+              required
               type="text"
+              minlength="2"
+              maxlength="200"
               placeholder="Расскажите о себе"
               value=""
               class="popup__input-text popup__input-text_type_job"
+              id="popup__job-input"
               name="job"
             />
+            <span class="popup__input-error popup__job-input-error"></span>
             <input type="submit" class="popup__save-button" value="Сохранить" />
           </form>
         </div>
@@ -74,21 +85,29 @@
         <div class="popup__container">
           <button class="popup__exit" type="button"></button>
           <h2 class="popup__title">Новое место</h2>
-          <form class="popup__form" name="popup__info">
+          <form class="popup__form" name="popup__add">
             <input
+              required
               type="text"
+              minlength="2"
+              maxlength="30"
               placeholder="Название"
               value=""
               class="popup__input-text popup__input-text_type_heading"
-              name="name"
+              id="popup__heading-input"
+              name="heading"
             />
+            <span class="popup__input-error popup__heading-input-error"></span>
             <input
-              type="text"
+              required
+              type="url"
               placeholder="Ссылка на картинку"
               value=""
               class="popup__input-text popup__input-text_type_link"
-              name="job"
+              id="popup__link-input"
+              name="link"
             />
+            <span class="popup__input-error popup__link-input-error"></span>
             <input
               type="submit"
               class="popup__save-button popup-add__save-button"

@@ -24,6 +24,7 @@ const exitButtonPopupInfo = popupInfo.querySelector('.popup__exit');
 const exitButtonPopupAdd = popupAddCard.querySelector('.popup__exit');
 const exitButtonPopupImage = popupImageOpen.querySelector('.image-popup__exit');
 const formElementInfo = document.querySelector('.popup__form');
+const sumbitButtonAddCard = document.querySelector('.popup-add__save-button');
 
 // Создание карточки
 function createCard(card) {
@@ -102,6 +103,10 @@ function handleDeleteButton(evt) {
 // Открытие попапа
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupByEscape);
+  popup.addEventListener('click', closePopupByClick);
+  sumbitButtonAddCard.disabled = true;
+  sumbitButtonAddCard.classList.add('popup__save-button_disabled');
 }
 function openPopupInfo() {
   openPopup(popupInfo);
@@ -112,6 +117,19 @@ function openPopupInfo() {
 // Закрытие попапа
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+}
+function closePopupByEscape(evt) {
+  if (evt.key === 'Escape') {
+    const openPopup = document.querySelector('.popup_opened');
+    closePopup(openPopup);
+  }
+}
+function closePopupByClick(evt) {
+  const openPopup = evt.target.closest('.popup_opened');
+  const isPopup = evt.target.closest('.popup__container');
+  if (!isPopup) {
+    closePopup(openPopup);
+  }
 }
 
 // Изменение информации в профиле
