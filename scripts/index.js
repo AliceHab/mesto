@@ -119,6 +119,7 @@ function openPopupAddCard() {
 // Закрытие попапа
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupByEscape);
   popup.removeEventListener('click', closePopupByClick);
 }
 function closePopupByEscape(evt) {
