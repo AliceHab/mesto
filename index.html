@@ -6,7 +6,6 @@
     <title>Mesto</title>
     <link rel="stylesheet" href="./pages/index.css" />
     <script type="module" src="./scripts/index.js"></script>
-    <script src="./scripts/validate.js" defer></script>
   </head>
   <body class="root">
     <div class="page">
@@ -38,7 +37,7 @@
       <footer class="footer">
         <p class="footer__copyright">© 2020 Mesto Russia</p>
       </footer>
-      <template id="elements-template">
+      <template class="elements-template" id="elements-template">
         <li class="elements__item">
           <button class="elements__delete" type="button"></button>
           <img class="elements__image" />
@@ -48,7 +47,7 @@
           </div>
         </li>
       </template>
-      <div class="popup">
+      <div class="popup popup-edit">
         <div class="popup__container">
           <button class="popup__exit" type="button"></button>
           <h2 class="popup__title">Редактировать профиль</h2>

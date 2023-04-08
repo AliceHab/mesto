@@ -1,5 +1,8 @@
 // Константы
 import initialCards from './initialCards.js';
+import Card from './Card.js';
+import FormValidator from './FormValidator.js';
+import config from './config.js';
 const popupInfo = document.querySelector('.popup');
 const buttonEditInfo = document.querySelector('.profile__edit-button');
 const inputNamePopupInfo = document.querySelector(
@@ -29,40 +32,19 @@ const formElementInfo = document.querySelector('.popup__form');
 const sumbitButtonAddCard = document.querySelector('.popup-add__save-button');
 const inactiveButtonClass = 'popup__save-button_disabled';
 
-// Создание карточки
-function createCard(card) {
-  const cardTemplate = document
-    .querySelector('#elements-template')
-    .content.cloneNode(true);
-
-  const cardHeading = cardTemplate.querySelector('.elements__title');
-  cardHeading.textContent = card.name;
-
-  const cardImage = cardTemplate.querySelector('.elements__image');
-  cardImage.setAttribute('src', card.link);
-  cardImage.setAttribute('alt', `${card.name}`);
-  cardImage.addEventListener('click', openPopupImage);
-
-  const likeCard = cardTemplate.querySelector('.elements__like-icon');
-  likeCard.addEventListener('click', lineOnClick);
-
-  const deleteButton = cardTemplate.querySelector('.elements__delete');
-  deleteButton.addEventListener('click', handleDeleteButton);
-
-  return cardTemplate;
-}
-
 // Добавление карточки на страницу
-function renderCard(card, container) {
-  container.prepend(card);
+function renderCard(item, container) {
+  const newCard = new Card(item, '.elements-template', openPopupImage);
+  const cardElement = newCard.generateCard();
+  container.prepend(cardElement);
 }
 
 // Создание карточек при загрузке странице
-initialCards.forEach(function (card) {
-  renderCard(createCard(card), cardsContainer);
+initialCards.forEach((initialCard) => {
+  renderCard(initialCard, cardsContainer);
 });
 
-// Создание новой карточки
+// Создание новой карточки через попап add card
 const formElementAdd = popupAddCard.querySelector('.popup__form');
 function addCard(evt) {
   evt.preventDefault();
@@ -72,32 +54,20 @@ function addCard(evt) {
     link: inputCardLink.value,
   };
 
-  renderCard(createCard(newCardObject), cardsContainer);
+  renderCard(newCardObject, cardsContainer, openPopupImage);
   formElementAdd.reset();
   closePopup(popupAddCard);
 }
 
-// Лайк
-function lineOnClick(evt) {
-  evt.target.classList.toggle('elements__like-icon_active');
-}
-
-// Открыть картинку
-function openPopupImage(evt) {
-  const imageToOpen = evt.target;
+// Открытие картинки. Параметр передаем через класс
+function openPopupImage(cardImage) {
+  const imageToOpen = cardImage;
   const linkToImage = imageToOpen.getAttribute('src');
   const imageAttributeAlt = imageToOpen.getAttribute('alt');
   imagePopup.setAttribute('src', linkToImage);
   imagePopup.setAttribute('alt', imageAttributeAlt);
   imageCaption.textContent = imageAttributeAlt;
   openPopup(popupImageOpen);
-}
-
-// Удаление карточки при нажатии на кнопку
-function handleDeleteButton(evt) {
-  const deleteButton = evt.target;
-  const card = deleteButton.closest('.elements__item');
-  card.remove();
 }
 
 // Открытие попапа
@@ -110,10 +80,11 @@ function openPopupInfo() {
   openPopup(popupInfo);
   inputNamePopupInfo.value = actualName.textContent;
   inputAboutPopupInfo.value = actualAbout.textContent;
+  profileFormValidator.resetError();
 }
 function openPopupAddCard() {
   openPopup(popupAddCard);
-  disableButton(sumbitButtonAddCard, inactiveButtonClass);
+  addCardFormValidator.resetError();
 }
 
 // Закрытие попапа
@@ -144,6 +115,14 @@ function submitProfileForm(evt) {
   closePopup(popupInfo);
 }
 
+// Включение валидации для форм
+const addCardFormValidator = new FormValidator(config, '.popup-add');
+addCardFormValidator.enableValidation();
+
+const profileFormValidator = new FormValidator(config, '.popup-edit');
+profileFormValidator.enableValidation();
+
+// Обработчики
 buttonEditInfo.addEventListener('click', openPopupInfo);
 buttonAddCard.addEventListener('click', openPopupAddCard);
 exitButtonPopupInfo.addEventListener('click', () => closePopup(popupInfo));
