@@ -29,19 +29,21 @@ const exitButtonPopupInfo = popupInfo.querySelector('.popup__exit');
 const exitButtonPopupAdd = popupAddCard.querySelector('.popup__exit');
 const exitButtonPopupImage = popupImageOpen.querySelector('.image-popup__exit');
 const formElementInfo = document.querySelector('.popup__form');
-const sumbitButtonAddCard = document.querySelector('.popup-add__save-button');
-const inactiveButtonClass = 'popup__save-button_disabled';
 
 // Добавление карточки на страницу
-function renderCard(item, container) {
+function createCard(item) {
   const newCard = new Card(item, '.elements-template', openPopupImage);
   const cardElement = newCard.generateCard();
+  return cardElement;
+}
+
+function attachCard(cardElement, container) {
   container.prepend(cardElement);
 }
 
 // Создание карточек при загрузке странице
 initialCards.forEach((initialCard) => {
-  renderCard(initialCard, cardsContainer);
+  attachCard(createCard(initialCard), cardsContainer);
 });
 
 // Создание новой карточки через попап add card
@@ -54,19 +56,16 @@ function addCard(evt) {
     link: inputCardLink.value,
   };
 
-  renderCard(newCardObject, cardsContainer, openPopupImage);
+  attachCard(createCard(newCardObject), cardsContainer);
   formElementAdd.reset();
   closePopup(popupAddCard);
 }
 
 // Открытие картинки. Параметр передаем через класс
-function openPopupImage(cardImage) {
-  const imageToOpen = cardImage;
-  const linkToImage = imageToOpen.getAttribute('src');
-  const imageAttributeAlt = imageToOpen.getAttribute('alt');
-  imagePopup.setAttribute('src', linkToImage);
-  imagePopup.setAttribute('alt', imageAttributeAlt);
-  imageCaption.textContent = imageAttributeAlt;
+function openPopupImage(altImage, srcImage) {
+  imagePopup.setAttribute('src', srcImage);
+  imagePopup.setAttribute('alt', altImage);
+  imageCaption.textContent = altImage;
   openPopup(popupImageOpen);
 }
 
