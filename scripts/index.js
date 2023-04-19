@@ -3,6 +3,7 @@ import initialCards from './initialCards.js';
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
 import config from './config.js';
+import Section from './Section.js';
 const popupInfo = document.querySelector('.popup');
 const buttonEditInfo = document.querySelector('.profile__edit-button');
 const inputNamePopupInfo = document.querySelector(
@@ -22,6 +23,7 @@ const inputCardLink = popupAddCard.querySelector(
 );
 const buttonAddCard = document.querySelector('.profile__add-button');
 const cardsContainer = document.querySelector('.elements');
+const cardsContainerSelector = '.elements';
 const popupImageOpen = document.querySelector('.image-popup');
 const imagePopup = popupImageOpen.querySelector('.image-popup__image');
 const imageCaption = popupImageOpen.querySelector('.image-popup__caption');
@@ -30,21 +32,20 @@ const exitButtonPopupAdd = popupAddCard.querySelector('.popup__exit');
 const exitButtonPopupImage = popupImageOpen.querySelector('.image-popup__exit');
 const formElementInfo = document.querySelector('.popup__form');
 
-// Добавление карточки на страницу
-function createCard(item) {
-  const newCard = new Card(item, '.elements-template', openPopupImage);
-  const cardElement = newCard.generateCard();
-  return cardElement;
-}
+// Добавление карточек при открытии страницы
+const defaultCardsList = new Section(
+  {
+    items: initialCards,
+    renderer: (item) => {
+      const card = new Card(item, '.elements-template', openPopupImage);
+      const cardElement = card.generateCard();
+      defaultCardsList.addItem(cardElement);
+    },
+  },
+  cardsContainerSelector
+);
 
-function attachCard(cardElement, container) {
-  container.prepend(cardElement);
-}
-
-// Создание карточек при загрузке странице
-initialCards.forEach((initialCard) => {
-  attachCard(createCard(initialCard), cardsContainer);
-});
+defaultCardsList.renderItems();
 
 // Создание новой карточки через попап add card
 const formElementAdd = popupAddCard.querySelector('.popup__form');
@@ -56,7 +57,19 @@ function addCard(evt) {
     link: inputCardLink.value,
   };
 
-  attachCard(createCard(newCardObject), cardsContainer);
+  const newCard = new Section(
+    {
+      items: newCardObject,
+      renderer: (item) => {
+        const card = new Card(item, '.elements-template', openPopupImage);
+        const cardElement = card.generateCard();
+        defaultCardsList.addItem(cardElement);
+      },
+    },
+    cardsContainerSelector
+  );
+
+  newCard.renderItems();
   formElementAdd.reset();
   closePopup(popupAddCard);
 }
