@@ -1,30 +1,29 @@
 class FormValidator {
-  constructor(config, htmlElement) {
-    this._config = config;
+  constructor(config, formElement) {
     this._formSelector = config.formSelector;
     this.inputSelector = config.inputSelector;
     this.submitButtonSelector = config.submitButtonSelector;
     this.inactiveButtonClass = config.inactiveButtonClass;
     this.inputErrorClass = config.inputErrorClass;
     this.errorClass = config.errorClass;
-    this._htmlElement = htmlElement;
+    this._formElement = formElement;
+    this._form = document
+      .querySelector(this._formElement)
+      .querySelector(this._formSelector);
   }
 
   enableValidation = () => {
-    this._form = document
-      .querySelector(this._htmlElement)
-      .querySelector(this._formSelector);
     this._inputList = Array.from(
       this._form.querySelectorAll(this.inputSelector)
     );
     this._submitButton = this._form.querySelector(this.submitButtonSelector);
-    this._form.addEventListener('submit', (evt) => {
-      evt.preventDefault();
-    });
     this._setEventListeners();
   };
 
   _setEventListeners() {
+    this._form.addEventListener('submit', (evt) => {
+      evt.preventDefault();
+    });
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
@@ -77,7 +76,7 @@ class FormValidator {
     this._submitButton.disabled = false;
   }
 
-  resetError() {
+  resetErrors() {
     this._toggleButtonState();
 
     this._inputList.forEach((inputElement) => {

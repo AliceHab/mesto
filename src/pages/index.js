@@ -1,11 +1,11 @@
 import './index.css';
-import initialCards from '../components/initialCards.js';
+import initialCards from '../utils/initialCards.js';
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
-import config from '../components/config.js';
+import config from '../utils/config.js';
 import Section from '../components/Section.js';
 import Popup from '../components/Popup.js';
-import PopupWithImage from '../components/PicturePopup.js';
+import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 
@@ -70,4 +70,7 @@ buttonEditInfo.addEventListener('click', () => {
   inputAboutPopupInfo.value = userInfoData.about;
   popupInfoUser.open();
 });
-buttonAddCard.addEventListener('click', () => popupAdd.open());
+buttonAddCard.addEventListener('click', () => {
+  popupAdd.open();
+  addCardFormValidator.resetErrors();
+});

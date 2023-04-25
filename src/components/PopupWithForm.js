@@ -6,22 +6,22 @@ class PopupWithForm extends Popup {
 
     this._handleFormSubmit = handleFormSubmit;
     this._popupForm = this._popup.querySelector('.popup__form');
-  }
-
-  _getInputValues() {
     this._inputList = Array.from(
       this._popupForm.querySelectorAll('.popup__input-text')
     );
-    this._inputData = {};
+  }
+
+  _getInputValues() {
+    const inputData = {};
 
     this._inputList.forEach((input) => {
       const name = input.name;
       const value = input.value;
 
-      this._inputData[name] = value;
+      inputData[name] = value;
     });
 
-    return this._inputData;
+    return inputData;
   }
 
   close() {

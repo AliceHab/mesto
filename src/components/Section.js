@@ -5,12 +5,12 @@ class Section {
     this._containerSelector = document.querySelector(containerSelector);
   }
 
+  renderItem(item) {
+    this._renderer(item);
+  }
+
   renderItems() {
-    if (this._itemsToRender.length > 1) {
-      this._itemsToRender.forEach((item) => this._renderer(item));
-    } else {
-      this._renderer(this._itemsToRender);
-    }
+    this._itemsToRender.forEach((item) => this.renderItem(item));
   }
 
   addItem(element) {
