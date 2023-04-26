@@ -23,7 +23,6 @@ class Popup {
   setEventListeners() {
     // Клик на фон закрывает попап
     this._popup.addEventListener('click', (evt) => {
-      this._openPopup = evt.target.closest('.popup_opened');
       const isPopup = evt.target.closest('.popup__container');
       if (!isPopup) {
         this.close();

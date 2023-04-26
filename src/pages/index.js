@@ -58,9 +58,16 @@ const cardList = new Section(
 cardList.renderItems();
 
 // Включение валидации для форм
-const addCardFormValidator = new FormValidator(config, '.popup-add');
+const addCardFormValidator = new FormValidator(
+  config,
+  document.forms['popup__info']
+);
 addCardFormValidator.enableValidation();
-const profileFormValidator = new FormValidator(config, '.popup-edit');
+
+const profileFormValidator = new FormValidator(
+  config,
+  document.forms['popup__add']
+);
 profileFormValidator.enableValidation();
 
 // Обработчики
@@ -69,6 +76,7 @@ buttonEditInfo.addEventListener('click', () => {
   inputNamePopupInfo.value = userInfoData.name;
   inputAboutPopupInfo.value = userInfoData.about;
   popupInfoUser.open();
+  profileFormValidator.resetErrors();
 });
 buttonAddCard.addEventListener('click', () => {
   popupAdd.open();
