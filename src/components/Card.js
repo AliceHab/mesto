@@ -15,9 +15,9 @@ class Card {
     return cardElement;
   }
 
-  _handleLikeButton(evt) {
-    evt.target.classList.toggle('elements__like-icon_active');
-  }
+  _handleLikeButton = () => {
+    this._likeButton.classList.toggle('elements__like-icon_active');
+  };
 
   _handleDeleteButton = () => {
     this._element.remove();
