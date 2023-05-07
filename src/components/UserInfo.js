@@ -1,7 +1,8 @@
 class UserInfo {
-  constructor(userNameSelector, userAboutSelector) {
+  constructor(userNameSelector, userAboutSelector, userAvatar) {
     this._userNameSelector = document.querySelector(userNameSelector);
     this._userAboutSelector = document.querySelector(userAboutSelector);
+    this._userAvatar = document.querySelector(userAvatar);
   }
 
   getUserInfo() {
@@ -13,7 +14,16 @@ class UserInfo {
 
   setUserInfo(data) {
     this._userNameSelector.textContent = data.name;
-    this._userAboutSelector.textContent = data.job;
+    this._userAboutSelector.textContent = data.about;
+    this._userID = data._id;
+  }
+
+  editAvatar(data) {
+    this._userAvatar.src = data.avatar;
+  }
+
+  getUserId() {
+    return this._userID;
   }
 }
 

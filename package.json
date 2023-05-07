@@ -6,6 +6,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "predeploy": "npm run build",
+    "dev": "webpack serve",
     "deploy": "gh-pages -d dist"
   },
   "author": "Maxim Novak",

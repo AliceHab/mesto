@@ -9,6 +9,8 @@ class PopupWithForm extends Popup {
     this._inputList = Array.from(
       this._popupForm.querySelectorAll('.popup__input-text')
     );
+    this._confirmButton = this._popup.querySelector('.popup__save-button');
+    this._confirmButtonActualText = this._confirmButton.value;
   }
 
   _getInputValues() {
@@ -16,17 +18,24 @@ class PopupWithForm extends Popup {
 
     this._inputList.forEach((input) => {
       const name = input.name;
-      const value = input.value;
+      const about = input.value;
 
-      inputData[name] = value;
+      inputData[name] = about;
     });
-
     return inputData;
   }
 
   close() {
     super.close();
     this._popupForm.reset();
+  }
+
+  renderLoading(isLoading) {
+    if (isLoading) {
+      this._confirmButton.value = 'Сохранение...';
+    } else {
+      this._confirmButton.value = this._confirmButtonActualText;
+    }
   }
 
   setEventListeners() {
