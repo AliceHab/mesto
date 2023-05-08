@@ -9,8 +9,8 @@ class PopupWithSubmit extends Popup {
     this._confirmButtonActualText = this._confirmButton.value;
   }
 
-  handleFormSubmit(cbCardDelete) {
-    this.handleFormSubmit = cbCardDelete;
+  overwriteDeleteHandler(cbCardDelete) {
+    this._handleFormSubmit = cbCardDelete;
   }
 
   renderLoading(isLoading) {
@@ -26,8 +26,7 @@ class PopupWithSubmit extends Popup {
 
     this._form.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      this.handleFormSubmit();
-      this.close();
+      this._handleFormSubmit();
     });
   }
 }

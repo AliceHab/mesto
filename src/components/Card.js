@@ -21,6 +21,10 @@ class Card {
     return cardElement;
   }
 
+  hasLike() {
+    return this._likes.find((like) => like._id === this._userID);
+  }
+
   _renderLikes() {
     this._likes.forEach((element) => {
       if (element._id === this._userID) {

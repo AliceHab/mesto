@@ -47,6 +47,9 @@ const popupInfoUser = new PopupWithForm('.popup', (item) => {
   popupInfoUser.renderLoading(true);
   api
     .editUserInfo(item)
+    .then(() => {
+      popupInfoUser.close();
+    })
     .catch((error) => {
       console.error(error);
     })
@@ -61,6 +64,9 @@ const popupAdd = new PopupWithForm('.popup-add', (item) => {
     .postCard(item)
     .then((item) => {
       cardList.addItem(createCard(item));
+    })
+    .then(() => {
+      popupAdd.close();
     })
     .catch((error) => {
       console.error(error);
@@ -77,6 +83,9 @@ const popupAvatar = new PopupWithForm('.popup-avatar', (item) => {
   userInfo.editAvatar(item);
   api
     .editAvatar(item)
+    .then(() => {
+      popupAvatar.close();
+    })
     .catch((error) => {
       console.error(error);
     })
@@ -125,7 +134,7 @@ function createCard(cardData) {
 // Функция лайка
 // Если пользователь поставил лайк, то при клике удаляем
 function handleLikeCard(card) {
-  if (card._likes.find((like) => like._id === userInfo.getUserId())) {
+  if (card.hasLike()) {
     api
       .deleteLike(card)
       .then((cardInfo) => {
@@ -148,12 +157,15 @@ function handleLikeCard(card) {
 // Перезаписываем обработчик в popupDelete
 function handleDeleteCard(card) {
   popupDelete.open();
-  popupDelete.handleFormSubmit(() => {
+  popupDelete.overwriteDeleteHandler(() => {
+    popupDelete.renderLoading(true);
     api
       .deleteCard(card)
       .then(() => {
-        card._handleDeleteButton;
-        popupDelete.renderLoading(true);
+        card._element.remove();
+      })
+      .then(() => {
+        popupDelete.close();
       })
       .catch((error) => {
         console.error(error);
