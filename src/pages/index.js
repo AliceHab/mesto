@@ -136,7 +136,7 @@ function createCard(cardData) {
 function handleLikeCard(card) {
   if (card.hasLike()) {
     api
-      .deleteLike(card)
+      .deleteLike(card.getCardID())
       .then((cardInfo) => {
         card.updateLikesCounter(cardInfo);
       })
@@ -145,7 +145,7 @@ function handleLikeCard(card) {
       });
   } else {
     api
-      .like(card)
+      .like(card.getCardID())
       .then((cardInfo) => {
         card.updateLikesCounter(cardInfo);
       })
@@ -160,9 +160,9 @@ function handleDeleteCard(card) {
   popupDelete.overwriteDeleteHandler(() => {
     popupDelete.renderLoading(true);
     api
-      .deleteCard(card)
+      .deleteCard(card.getCardID())
       .then(() => {
-        card._element.remove();
+        card.handleDeleteButton();
       })
       .then(() => {
         popupDelete.close();

@@ -56,22 +56,22 @@ class Api {
     }).then((res) => this.checkResponse(res));
   }
 
-  like(data) {
-    return fetch(`${this._baseUrl}/cards/${data._cardID}/likes`, {
+  like(cardID) {
+    return fetch(`${this._baseUrl}/cards/${cardID}/likes`, {
       method: 'PUT',
       headers: this._headers,
     }).then((res) => this.checkResponse(res));
   }
 
-  deleteLike(data) {
-    return fetch(`${this._baseUrl}/cards/${data._cardID}/likes`, {
+  deleteLike(cardID) {
+    return fetch(`${this._baseUrl}/cards/${cardID}/likes`, {
       method: 'DELETE',
       headers: this._headers,
     }).then((res) => this.checkResponse(res));
   }
 
-  deleteCard(data) {
-    return fetch(`${this._baseUrl}/cards/${data._cardID}`, {
+  deleteCard(cardID) {
+    return fetch(`${this._baseUrl}/cards/${cardID}`, {
       method: 'DELETE',
       headers: this._headers,
     }).then((res) => this.checkResponse(res));

@@ -37,7 +37,7 @@ class Card {
     this._likeButton.classList.toggle('elements__like-icon_active');
   };
 
-  _handleDeleteButton = () => {
+  handleDeleteButton = () => {
     this._element.remove();
   };
 
